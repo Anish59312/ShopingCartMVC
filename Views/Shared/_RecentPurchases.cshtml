@@ -1,0 +1,18 @@
+﻿<h1> Recent Purchases</h1>
+<br />
+<ul>
+    @{
+        if(ViewBag.TopProducts.Count != 0)
+        {
+            foreach(var product in ViewBag.TopProducts)
+            {
+                <li>@product</li>
+            }
+        }
+        else
+        {
+            <li>No products purchased</li>
+        }
+    }
+</ul>
+

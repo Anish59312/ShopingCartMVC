@@ -1,0 +1,57 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextaccessor
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+        <h3 class="text-center mb-4">Login</h3>
+        <form asp-action="CheckRole">
+            <div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                @{
+                    if (httpContextaccessor.HttpContext.Request.Cookies["UserId"] != null)
+                    {
+                        @Html.TextBox("name", httpContextaccessor.HttpContext.Request.Cookies["UserId"])
+                        ;
+                    }
+                    else
+                    {
+                        @Html.TextBox("name")
+                    }
+                }
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                @{
+                    if (httpContextaccessor.HttpContext.Request.Cookies["Password"] != null)
+                    {
+                        @Html.Password("pwd", httpContextaccessor.HttpContext.Request.Cookies["Password"])
+                        ;
+                    }
+                    else
+                    {
+                        @Html.Password("pwd")
+                    }
+                }
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <input type="checkbox" name="RememberMe" /> Remember Me
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">
+                        &nbsp;
+                </div>
+                <div class="col-md-6">
+                    <a asp-area="" asp-controller="User" asp-action="RegisterUser">New User Registration</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+   
+
+    <script src="path/to/bootstrap.bundle.min.js"></script>
+
+
